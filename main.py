@@ -5,7 +5,7 @@ from car_manager import CarManager
 from scoreboard import Scoreboard
 
 GAME_TICK = 0.040
-WIN_PAUSE_DURATION = 1.5
+WAIT = 1.5
 SPAWN_TIME = 0.25
 
 screen = Screen()
@@ -44,11 +44,12 @@ def check_win():
         cars.clear()
         player.goto((0, -280))
         screen.update()
-        time.sleep(WIN_PAUSE_DURATION)
+        time.sleep(WAIT)
 
 
 def check_collision(car):
     if player.distance(car) < 20:
+        time.sleep(WAIT)
         game_over()
 
 

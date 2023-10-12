@@ -11,12 +11,10 @@ class CarManager(Turtle):
     def __init__(self, speed_level: int = 1):
         super().__init__()
         self.penup()
-        random_index = random.randint(0, 5)
-        self.color(COLORS[random_index])
+        self.color(random.choice(COLORS))
         self.speed("fastest")
         self.shape("square")
-        self.shapesize(stretch_wid=2, stretch_len=1)
-        self.setheading(90)
+        self.shapesize(stretch_wid=1, stretch_len=2)
 
         random_y = random.randint(-230, 230)
         self.goto(300, random_y)

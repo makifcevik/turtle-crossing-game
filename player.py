@@ -11,8 +11,7 @@ class Player(Turtle):
 
     def __init__(self):
         super().__init__()
-        random_index = random.randint(0, 5)
-        self.color(COLORS[random_index])
+        self.color(random.choice(COLORS))
         self.shape("turtle")
         self.penup()
         self.speed("fastest")
