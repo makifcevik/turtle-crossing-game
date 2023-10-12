@@ -1,15 +1,18 @@
+import random
 from turtle import Turtle
 
 STARTING_POSITION = (0, -280)
 MOVE_DISTANCE = 10
 FINISH_LINE_Y = 280
+COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 
 
 class Player(Turtle):
 
     def __init__(self):
         super().__init__()
-        self.color("black")
+        random_index = random.randint(0, 5)
+        self.color(COLORS[random_index])
         self.shape("turtle")
         self.penup()
         self.speed("fastest")

@@ -16,6 +16,8 @@ screen.listen()
 player = Player()
 screen.onkeypress(key="Up", fun=player.move)
 
+scoreboard = Scoreboard()
+
 cars = []
 current_time = time.time()
 level = 1
@@ -29,18 +31,34 @@ def spawn_car(speed_level):
         cars.append(new_car)
     for car in cars:
         car.move()
+        check_collision(car)
 
 
 def check_win():
     global level
     if player.ycor() > 280:
         level += 1
+        scoreboard.update(level)
         for car in cars:
             car.remove_car()
         cars.clear()
         player.goto((0, -280))
         screen.update()
         time.sleep(WIN_PAUSE_DURATION)
+
+
+def check_collision(car):
+    if player.distance(car) < 20:
+        game_over()
+
+
+def game_over():
+    global game_is_on
+    game_is_on = False
+    scoreboard.game_over()
+    player.hideturtle()
+    for car in cars:
+        car.remove_car()
 
 
 game_is_on = True
